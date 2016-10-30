@@ -26,5 +26,22 @@ namespace Models
                 DateCompleted = DateTime.Now;
             }
         }
+
+        public override bool Equals(object obj)
+        {
+            if (obj == null) return false;
+            ToDoItem temp = (ToDoItem) obj;
+            return Id.Equals(temp.Id);
+        }
+
+        public override int GetHashCode()
+        {
+            return Id.GetHashCode();
+        }
+
+        public override string ToString()
+        {
+            return Text;
+        }
     }
 }

@@ -42,6 +42,9 @@ namespace Repositories
 
         public void Add(ToDoItem todoItem)
         {
+            if (todoItem == null) throw new ArgumentNullException();
+            if (_inMemoryTodoDatabase == null) throw new NotImplementedException();
+            if (_inMemoryTodoDatabase.Contains(todoItem)) throw new DuplicateToDoItemException();
             _inMemoryTodoDatabase.Add(todoItem);
         }
 
